@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pause Réseaux : bilan de la semaine</title>
+  <style>
+    :root { --teal: #0F766E; --ink: #1F2937; --muted: #6B7280; --bg: #F8FAFA; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+    header { background: var(--teal); color: #fff; padding: 20px 24px; }
+    header h1 { margin: 0; font-size: 20px; }
+    main { max-width: 680px; margin: 24px auto; padding: 0 16px; }
+    .card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .big { font-size: 34px; font-weight: 700; color: var(--teal); }
+    .muted { color: var(--muted); font-size: 14px; }
+    .chart { display: flex; align-items: flex-end; gap: 10px; height: 180px; margin-top: 16px; }
+    .bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+    .bar { width: 100%; background: #5EEAD4; border-radius: 6px 6px 0 0; min-height: 2px; }
+    .bar-label { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #E5E7EB; font-size: 15px; }
+    .row:last-child { border-bottom: none; }
+    .locked { background: #F0FDFA; border: 1px dashed var(--teal); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: var(--teal); color: #fff; font-size: 15px; cursor: pointer; margin-top: 12px; }
+    button:disabled { background: #9CA3AF; cursor: not-allowed; }
+    a { color: var(--teal); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bilan de la semaine</h1>
+  </header>
+  <main>
+    <div class="card">
+      <div class="muted">Temps total sur les 7 derniers jours</div>
+      <div class="big" id="total">0 min</div>
+      <div class="muted" id="comparison"></div>
+      <div class="chart" id="chart"></div>
+    </div>
+
+    <div class="card">
+      <strong>Par site</strong>
+      <div id="sites"></div>
+    </div>
+
+    <div class="card locked" id="previousCard" hidden>
+      <div id="previousLocked">
+        <strong>Bilans des semaines précédentes</strong>
+        <p class="muted">Disponible avec la version Pro. <a href="options.html" target="_blank">Activer Pro</a></p>
+      </div>
+      <div id="previousContent" hidden>
+        <strong>Semaine précédente</strong>
+        <div id="previousSites"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <strong>Carte à partager</strong>
+      <p class="muted">Une image de votre bilan, prête à publier en story.</p>
+      <button id="share" disabled>Générer la carte (Pro)</button>
+    </div>
+  </main>
+  <script src="report.js"></script>
+</body>
+</html>
