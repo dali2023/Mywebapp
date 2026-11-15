@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Pause Réseaux",
+  "version": "0.1.0",
+  "description": "Suivez et réduisez votre temps sur les réseaux sociaux. Données stockées uniquement sur votre appareil.",
+  "permissions": ["storage", "alarms", "notifications"],
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "https://www.tiktok.com/*",
+    "https://www.youtube.com/*",
+    "https://www.facebook.com/*",
+    "https://x.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://www.tiktok.com/*",
+        "https://www.youtube.com/*",
+        "https://www.facebook.com/*",
+        "https://x.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Pause Réseaux",
+    "default_popup": "popup.html"
+  }
+}
